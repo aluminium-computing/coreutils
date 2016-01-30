@@ -1,0 +1,36 @@
+/* Licensed under APL; read APL in LICENSE file 
+   Copyright (c) 2013 Aim Inc.
+*/
+
+#define LICENSE AIM_PUBLIC
+#undef _GNU_SOURCE
+#define _AIM_SOURCE
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+
+mode_t perm_parse(int);
+
+int main(int argc, char **argv, char **env) {
+  if (argc != 3) {
+    fprintf(stderr, "What do you want to change the permissions of?\n");
+    return -1;
+  }
+  int perms = atoi(argv[1]);
+  mode_t mode_p;
+  mode_p = perm_parse(perms);
+  if (chmod(argv[2], mode_p) == -1) fprintf(stderr, "chpr: failed to chnage permissions of %s\n", argv[2]);
+}
+
+mode_t perm_parse(int int_perms) {
+  mode_t mode_perms;
+  
+  int u, g, o;
+  o = int_perms % 10;
+  g = (int_perms / 10) % 10;
+  u = (int_perms / 100) % 10;
+  mode_perms = (u << 6) | (g << 3) | o;
+  return mode_perms; 
+ 
+}

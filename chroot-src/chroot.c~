@@ -1,0 +1,26 @@
+/* Licensed under APL; read APL in LICENSE file 
+   Copyright (c) 2013 Aim Inc.
+*/
+
+#define LICENSE AIM_PUBLIC
+#undef _GNU_SOURCE
+#define _AIM_SOURCE
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main(int argc, char **argv, char **env) {
+  if (argc != 2) {
+    fprintf(stderr, "Error 18: Not enough arguments\n");
+    return -1;
+  }
+  /*
+  char *shell;
+  shell = getenv("SHELL");
+  */
+  chroot(argv[1]);
+  printf("here\n");
+  execvpe("/bin/bash", argv, env);
+  printf("there\n");
+}

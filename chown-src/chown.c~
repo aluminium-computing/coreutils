@@ -1,0 +1,25 @@
+/* Licensed under APL; read APL in LICENSE file 
+   Copyright (c) 2013 Aim Inc.
+*/
+
+#define LICENSE AIM_PUBLIC
+#undef _GNU_SOURCE
+#define _AIM_SOURCE
+
+#include <unistd.h>
+#include <sys/types.h>
+#include <pwd.h>
+#include <stdio.h>
+
+int main(int argc, char **argv, char **env) {
+  if (argc != 3) {
+    fprintf(stderr, "Error 18: Not enough arguments\n");
+    return -1;
+  }
+  struct passwd *pwd;
+  if ((pwd = getpwnam(argv[1])) == NULL) { 
+    fprintf(stderr, "Error 71: No such user '%s'\n", argv[1]); 
+    return -1; 
+  }
+  if (chown(argv[2], pwd->pw_uid, pwd->pw_gid) == -1) fprintf(stderr, "Error 59: Could not change the owner of %s\n", argv[2]);
+}

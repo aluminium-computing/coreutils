@@ -1,0 +1,39 @@
+/* Licensed under APL; read APL in the LICENSE file */
+
+/* get printf */
+
+#include <stdio.h>
+#include <dirent.h>
+int ls(char *directory);
+
+ 
+
+int main(int argc, char **argv, char **env) {
+  char *directory;
+  directory = ".";
+  
+  printf("directory: %p, %s\n", directory, directory);
+  
+  int i=1;
+  while (argv[i]) {
+    if (argv[i][0] != '-') directory = argv[i];
+    i++;
+  }
+
+  printf("directory: %p, %s\n", directory, directory);
+
+  ls(directory);
+
+}
+
+int ls(char *directory) {
+  DIR *dirp;
+  struct dirent *dirconts;
+  dirp=opendir(directory);
+  dirconts = readdir(dirp);
+  printf(".\n");
+  while (dirconts=readdir(dirp)) {
+    printf("%s\n", dirconts->d_name);
+  
+  }
+}

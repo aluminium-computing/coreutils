@@ -1,0 +1,24 @@
+Wildebeest
+
+PROGRAMS
+
+chown
+Changes ownership of a file
+chown user file
+
+ERRORS
+
+01: Not enough arguments
+The program in question needs more arguments. Try specifying more.
+
+02: No such user
+The user specified doesn’t exist. Try specifying one that does, or create the user.
+
+03: Insufficient permissions
+This error generally can be fixed by running as root.
+
+04: No such file
+The file does’t exist.
+
+05: No such directory
+The specified directory doesn’t exist.
