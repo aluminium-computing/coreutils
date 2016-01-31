@@ -9,11 +9,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <string.h>
 
 mode_t perm_parse(int);
 
 int main(int argc, char **argv, char **env) {
-    if (strncmp(argv[1], "-v", 2) == 0) {
+  if (argv[1] == NULL) {
+    printf("chpr: Error 01 encountered: not enough arguments\n");
+    return -1;
+  }
+  
+  if (strncmp(argv[1], "-v", 2) == 0) {
         printf("Wildebeest™ 'chpr' v0.2\n");
         printf("Copyright © 2013, 2016 Aluminium Computing, Inc\n");
         return 0;
