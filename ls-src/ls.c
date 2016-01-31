@@ -10,10 +10,12 @@ int ls(char *directory);
 
 
 int main(int argc, char **argv, char **env) {
-  if (strncmp(argv[1], "-v", 2) == 0) {
-    printf("Wildebeest™ 'ls' v0.2\n");
-    printf("Copyright © 2013, 2016 Aluminium Computing, Inc\n");
-    return 0;
+  if (argc != 1){
+    if (strncmp(argv[1], "-v", 2) == 0) {
+      printf("Wildebeest™ 'ls' v0.2\n");
+      printf("Copyright © 2013, 2016 Aluminium Computing, Inc\n");
+      return 0;
+    }
   }
   char *directory;
   directory = ".";
