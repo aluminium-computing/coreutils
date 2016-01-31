@@ -32,7 +32,10 @@ int main(int argc, char **argv, char **env) {
   int perms = atoi(argv[1]);
   mode_t mode_p;
   mode_p = perm_parse(perms);
-  if (chmod(argv[2], mode_p) == -1){ fprintf(stderr, "chpr: Error 03 encountered: insufficient permissions.\n", argv[2]); return -3; }
+  if (chmod(argv[2], mode_p) == -1) {
+    fprintf(stderr, "chpr: Error 03 encountered: insufficient permissions.\n");
+    return -3;
+  }
 }
 
 mode_t perm_parse(int int_perms) {

@@ -7,7 +7,7 @@
 #define _AIM_SOURCE
 
 #include <stdio.h>
-
+#include <string.h>
 int main(int argc, char **argv, char **env) {
   if (argv[1] == NULL) {
     fprintf(stderr, "cp: Error 01 encountered: not enough arguments\n");

@@ -7,6 +7,7 @@
 #define _AIM_SOURCE
 
 #include <stdio.h>
+#include <string.h>
 
 int main(int argc, char **argv, char **env) {
   if (argv[1] == NULL) {
@@ -24,7 +25,7 @@ int main(int argc, char **argv, char **env) {
   FILE *fd;
   char buf[4096];
   size_t stuff_read;
-  if(fd = fopen(argv[1], "r") ){
+  if( (fd = fopen(argv[1], "r")) ){
     
   }
   while (!feof(fd)) {

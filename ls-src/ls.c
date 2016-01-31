@@ -22,7 +22,7 @@ int main(int argc, char **argv, char **env) {
 
   int i=1;
   while (argv[i]) {
-    if (argv[i] != NULL && argv[i][0] != '-' || argv[i][0] != '_') directory = argv[i];
+    if ((argv[i] != NULL) && ((argv[i][0] != '-') || argv[i][0] != '_')) directory = argv[i];
     i++;
   }
 ///  printf("DEBUG: directory = %s\n", directory);
@@ -38,8 +38,9 @@ int ls(char *directory) {
     return -5;}
   dirconts = readdir(dirp);
   printf(".\n");
-  while (dirconts=readdir(dirp)) {
+  while ( (dirconts = readdir(dirp)) ) {
     printf("%s\n", dirconts->d_name);
 
   }
+  return 0;
 }
