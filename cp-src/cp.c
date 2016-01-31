@@ -26,11 +26,19 @@ int main(int argc, char **argv, char **env) {
   char buf[4096];
   size_t stuff_read;
   fd = fopen(argv[1], "r");
-  fd2 = fopen(argv[2], "w+");
+  //printf("djwe\n");
+  if ((fd2 = fopen(argv[2], "w+")) == NULL) {
+    printf("cp: Error 03 encountered: insufficient permissions.\n");
+    return -3;
+  }
+  //printf("djwewq\n");
   while (!feof(fd)) {
     stuff_read = fread(buf, sizeof(char), 4096, fd);
     if (stuff_read) {
+      // printf("djwewwq\n");
       fwrite(buf, sizeof(char), stuff_read, fd2);
+      // printf("djweewq\n");
+      
     } 
   }
 }
