@@ -9,6 +9,11 @@
 #include <stdio.h>
 
 int main(int argc, char **argv, char **env) {
+  if (argv[1] == NULL) {
+    fprintf(stderr, "cp: Error 01 encountered: not enough arguments\n");
+    return -1;
+  }
+
     if (strncmp(argv[1], "-v", 2) == 0) {
         printf("Wildebeest™ 'cp' v0.2\n");
         printf("Copyright © 2013, 2016 Aluminium Computing, Inc\n");
