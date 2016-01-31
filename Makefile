@@ -20,3 +20,4 @@ cp:
 
 clean:
 	@rm -rf out && mkdir -p out && echo Programs\ Removed.
+install: ./install.sh
