@@ -22,11 +22,17 @@ int main(int argc, char **argv, char **env) {
         printf("Copyright © 2013, 2016 Aluminium Computing, Inc\n");
         return 0;
     }
+  //printf("%d\n", argc);
   if (argc != 3) {
     fprintf(stderr, "chown: Error 01 encountered. Not enough arguments.\n");
     return -1;
   }
   struct passwd *pwd;
+    if ((pwd = getpwnam(argv[1])) == NULL) {
+      fprintf(stderr, "chown: Error 02 encountered. No such user as %s.\n", argv[1]);
+      return -1;
+    }
+
     if (chown(argv[2], pwd->pw_uid, pwd->pw_gid) == -1)
     fprintf(stderr, "chown: Error 03 encountered. Insufficient permissions.\n");
 }
