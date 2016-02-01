@@ -23,3 +23,6 @@ The file does’t exist.
 05: No such directory
 The specified directory doesn’t exist.
 
+06: No space remains
+07: Read-only filesystem
+08: unknown error

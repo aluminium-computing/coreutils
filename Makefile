@@ -1,4 +1,4 @@
-all: clean ls echo fpr chpr chown chroot cp 
+all: clean ls echo fpr chpr chown chroot cp md 
 
 ls:
 	@clang ls-src/ls.c -o out/ls && echo ls
@@ -14,6 +14,8 @@ chroot:
 	@clang chroot-src/chroot.c -o out/chroot && echo chroot
 cp:
 	@clang cp-src/cp.c -o out/cp && echo cp
+md:
+	@clang md-src/md.c -o out/md && echo md
 #cut:
 #	@clang cut-src/cut.c -o out/cut && echo cut
 #WARNING: `cut’ unsupported
